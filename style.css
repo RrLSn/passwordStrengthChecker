@@ -25,7 +25,7 @@ body{
 }
 
 .container h2{
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.2rem;
 }
 
 .input_Box{
@@ -58,6 +58,7 @@ input{
     display: grid;
     place-items: center;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .strengthMeter{
@@ -74,5 +75,48 @@ input{
     position: absolute;
     width: 0;
     transition: 0.5s;
-    background-color: #f00;
+}
+
+.container.weak .strengthMeter::before{
+    width: 10%;
+    background-color: rgb(240, 0, 0);
+    /* filter: drop-shadow(0 0 5px rgb(240, 0, 0)); */
+}
+
+.container.medium .strengthMeter::before{
+    width: 66%;
+    background-color: #ffac11;
+    /* filter: drop-shadow(0 0 5px #ffac11) */
+}
+
+.container.strong .strengthMeter::before{
+    width: 100%;
+    background-color: rgb(16, 255, 16);
+    /* filter: drop-shadow(0 0 5px rgb(16, 255, 16)); */
+}
+
+.container .strengthMeter::after{
+    position: absolute;
+    color: #fff;
+    top: -45px;
+    left: 45px;
+    transition: 0.5s;
+}
+
+.container.weak .strengthMeter::after{
+    content: 'Your Password is Weak';
+    color: rgb(240, 0, 0);
+    filter: drop-shadow(0 0 5px rgb(240, 0, 0));
+}
+
+.container.medium .strengthMeter::after{
+    content: 'Your Password is Medium';
+    color: #ffca11;
+    filter: drop-shadow(0 0 5px #ffca11);
+}
+
+.container.strong .strengthMeter::after{
+    content: 'Your Password is Strong';
+    color: rgb(16, 255, 16);
+    filter: drop-shadow(0 0 5px rgb(16, 255, 16));
 }
